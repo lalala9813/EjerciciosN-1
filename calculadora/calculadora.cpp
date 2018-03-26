@@ -39,13 +39,20 @@ void Calculadora::multi(int op1,int op2,int module){
 void Calculadora::inversa(int op1,int module){
 	std::vector <int> coeficientes;
 	int mod=module;
+	bool exist=false;
 	//divisiones sucesivas y almacenamiento en el vector
 	while(module%op1!=0){
+		if(module%op1==1){
+			exist=true;
+		}
 		coeficientes.push_back(module/op1);
 		int aux=op1;
 		op1=module%op1;
-		module=aux;
-		
+		module=aux;			
+	}
+	if(!exist){
+		std::cout<<"El modulo no existe"<<std::endl;
+		return;
 	}
 	std::cout<<std::endl;
 	//euclides ++
